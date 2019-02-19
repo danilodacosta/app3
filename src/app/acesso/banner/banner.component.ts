@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate , transition } from '@angular/animations';
-import { Imagem } from './imagem.model.ts';
+import { Imagem } from './imagem.model';
 
 @Component({
   selector: 'app-banner',
@@ -23,7 +23,7 @@ export class BannerComponent implements OnInit {
   public estado  = 'visivel';
 
   public imagens: Array<Imagem> = [
-    {estado: 'escondido', url: '/assets/banner-acesso/img_1.png'},
+    {estado: 'visivel', url: '/assets/banner-acesso/img_1.png'},
     {estado: 'escondido', url: '/assets/banner-acesso/img_2.png'},
     {estado: 'escondido', url: '/assets/banner-acesso/img_3.png'},
     {estado: 'escondido', url: '/assets/banner-acesso/img_4.png'},
@@ -33,7 +33,29 @@ export class BannerComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.imagens);
-    setTimeout(this.logicaRotacao(), 3000);
+    setTimeout(() => this.logicaRotacao(), 3000);
   }
+
+ public logicaRotacao(): void {
+
+    // auxilia na exibição da imagem seguinte
+    let idx: number;
+
+    // ocultar imagem
+    for (let i = 0; i <= 4; i++) {
+        if (this.imagens[i].estado === 'visivel') {
+            this.imagens[i].estado = 'escondido';
+
+            idx = i === 4 ? 0 : i + 1;
+
+            break;
+        }
+    }
+
+    // exibir a proxima imagem
+    this.imagens[idx].estado = 'visivel';
+
+    setTimeout(() => this.logicaRotacao(), 3000);
+  }
+
 }
