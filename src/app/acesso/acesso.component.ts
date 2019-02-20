@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
       })),
       transition('void => criado', [
         style({opacity : 0 , transform: 'translate(-50px, 0)'}),
-        animate('500ms 0s ease-in-out') // duração, delay e acelaração
+        animate('500ms 0s ease-in-out') // duração, delay e aceleração
       ])
     ]),
     trigger('animacao-painel', [
@@ -21,7 +21,7 @@ import { Component, OnInit } from '@angular/core';
        })),
        transition('void => criado' , [
           style({opacity: 0, transform: 'translate(50px, 0)'}),
-          animate('500ms 0s ease-in-out') // duração, delay e acelaração
+          animate('500ms 0s ease-in-out') // duração, delay e aceleração
        ])
     ])
   ]
@@ -30,6 +30,8 @@ export class AcessoComponent implements OnInit {
 
   public estadoBanner = 'criado';
   public estadoPainel = 'criado';
+
+  public cadastro = false;
 
   constructor() { }
 
