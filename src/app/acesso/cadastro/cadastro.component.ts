@@ -3,6 +3,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 
 import { Usuario } from '../usuario.model';
 import { Autenticacao } from '../../autenticacao.service';
+import { Alert } from 'selenium-webdriver';
 
 
 @Component({
@@ -39,6 +40,10 @@ export class CadastroComponent implements OnInit {
       this.formulario.value.senha
     );
 
-    this.autenticacao.cadastrarUsuario(usuario);
+    this.autenticacao.cadastrarUsuario(usuario)
+    .then(() => {
+      alert('usuario cadastro com sucesso !');
+      this.exibirPainelLogin();
+    });
   }
 }
