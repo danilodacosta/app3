@@ -5,7 +5,7 @@
     </div>
 
     <div *ngIf="cadastro; else formLogin">
-      <div 
+      <div
         class="col-sm-6 d-flex justify-content-start"
         [@animacao-painel]="estadoPainel"
         (@animacao-painel.start)="inicioDaAnimacao()"
@@ -15,7 +15,7 @@
     </div>
 
     <ng-template #formLogin>
-      <div 
+      <div
         class="col-sm-6 d-flex justify-content-start"
         [@animacao-painel]="estadoPainel"
         (@animacao-painel.start)="inicioDaAnimacao()"
