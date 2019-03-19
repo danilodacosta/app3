@@ -19,9 +19,6 @@ import { IncluirPublicacaoComponent } from './home/incluir-publicacao/incluir-pu
 import { Bd } from './bd.service';
 import { Progresso } from './progresso.service';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
