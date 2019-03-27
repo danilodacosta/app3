@@ -9,6 +9,7 @@ import * as firebase from 'firebase';
 export class PublicacoesComponent implements OnInit {
 
   public email: string;
+  public publicacoes: any;
 
   constructor(private bd: Bd) { }
 
@@ -21,7 +22,10 @@ export class PublicacoesComponent implements OnInit {
   }
 
   public atualizarTimeLine(): void {
-    this.bd.consultaPublicacoes(this.email);
+    this.bd.consultaPublicacoes(this.email)
+    .then((publicacoes: any) => {
+        this.publicacoes = publicacoes;
+    });
   }
 
 }
