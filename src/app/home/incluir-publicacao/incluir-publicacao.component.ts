@@ -1,7 +1,7 @@
 import { Progresso } from './../../progresso.service';
 import { Bd } from './../../bd.service';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import * as firebase from 'firebase';
 import { Observable, Subject, interval } from 'rxjs';
 import { map, tap, takeUntil } from 'rxjs/operators';
@@ -18,6 +18,7 @@ export class IncluirPublicacaoComponent implements OnInit {
 
   public progressoPublicacao = 'pendente';
   public porcentagemUpload: number;
+  @Output() public atualizarTimeLine: EventEmitter<any> = new EventEmitter<any>();
 
   public formulario: FormGroup = new FormGroup({
     titulo: new FormControl(null)
@@ -53,6 +54,9 @@ export class IncluirPublicacaoComponent implements OnInit {
 
       if (this.progresso.status === 'concluido') {
           this.progressoPublicacao = 'concluido';
+
+          // emitir o evento do componente parent (home)
+          this.atualizarTimeLine.emit();
           continua.next(false);
         }
       });
